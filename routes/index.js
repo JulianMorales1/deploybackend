@@ -7,6 +7,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.post("/post-message", (req, res) => {
+
+  console.log(req.body)
   const clientMessage = req.body.clientMessage
   const dateTime = new Date()
   const serverMessage = `Received client message: ${clientMessage}. Responded at ${dateTime.toString()}`
