@@ -12,7 +12,7 @@ router.post("/post-message", (req, res) => {
   const clientMessage = req.body.clientMessage
   const dateTime = new Date()
   const serverMessage = `Received client message: ${clientMessage}. Responded at ${dateTime.toString()}`
-  res.send(serverMessage)
+  res.json({ serverMessage })
 })
 
 module.exports = router;
