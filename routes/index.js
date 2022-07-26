@@ -7,12 +7,36 @@ router.get('/', function (req, res, next) {
 });
 
 router.post("/post-message", (req, res) => {
-
-  console.log(req.body)
   const clientMessage = req.body.clientMessage
   const dateTime = new Date()
   const serverMessage = `Received client message: ${clientMessage}. Responded at ${dateTime.toString()}`
   res.json({ serverMessage })
 })
+
+const userList = [{
+  id: 1,
+  firstName: "John",
+  lastName: "Doe",
+  email: "jd@gmail.com"
+}];
+
+router.post("/create-user", (req, res) => {
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const email = req.body.email
+  const id = userList.length + 1
+
+  const newUser = {
+    id,
+    firstName,
+    lastName,
+    email
+  }
+  userList.push(newUser)
+
+
+  res.status(200).json({ success: true })
+})
+
 
 module.exports = router;
